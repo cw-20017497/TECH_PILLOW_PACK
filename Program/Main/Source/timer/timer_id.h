@@ -1,0 +1,32 @@
+#ifndef __TIMER_ID_H__
+#define __TIMER_ID_H__
+
+/* TIMER - MS */
+enum
+{
+    TIMER_ID_COMM_EOL_RX,
+    TIMER_ID_COMM_EOL_TX,
+
+    TIMER_ID_COMM_DEBUG_RX,
+    TIMER_ID_COMM_DEBUG_TX,
+
+    TIMER_ID_COMM_UART_1_RX,
+    TIMER_ID_COMM_UART_1_TX,
+
+    TIMER_ID_1MS,
+    TIMER_ID_10MS,
+    TIMER_ID_100MS,
+    TIMER_ID_1SEC,
+    TIMER_ID_40SEC,
+    TIMER_ID_1MIN,
+    TIMER_ID_DEBUG,
+
+    TIMER_ID_TOF,
+    TIMER_ID_COMM_TOF_TX,
+
+    MAX_TIMER_ID_NUM
+};
+
+#define TIMER_ID_ADC_INTERVAL                       10UL
+
+#endif /* __TIMER_ID_H__ */
