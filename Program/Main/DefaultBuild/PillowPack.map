@@ -1,7 +1,7 @@
 
 
 
-78K0R Linker V1.80                            Date:15 Nov 2024 Page:   1
+78K0R Linker V1.80                            Date:19 Nov 2024 Page:   1
 
 Command:   -yC:\Program Files (x86)\Renesas Electronics\CS+\CACX\Device\
            RL78\Devicefile -_msgoff -oDefaultBuild\PillowPack.lmf -go84h
@@ -46,7 +46,7 @@ Directive:
 *** Link information ***
 
     90 output segment(s)
- 7A8AH byte(s) real data
+ 7A80H byte(s) real data
   8810 symbol(s) defined
 
 
@@ -916,7 +916,7 @@ Directive:
                   @@CNST   parser     03EB8H    00014H
                   @@CNST   parser_tof
                                       03ECCH    00014H
-         @@CODEL                      03EE0H    051DAH  CSEG
+         @@CODEL                      03EE0H    051D0H  CSEG
                   @@CODEL  r_systeminit
                                       03EE0H    0002FH
                   @@CODEL  r_cg_cgc   03F0FH    00017H
@@ -959,57 +959,57 @@ Directive:
                   @@CODEL  hal_i2c    05F3DH    00167H
                   @@CODEL  hal_key    060A4H    00045H
                   @@CODEL  hal_level
-                                      060E9H    00080H
+                                      060E9H    00076H
                   @@CODEL  hal_relay
-                                      06169H    00028H
+                                      0615FH    00028H
                   @@CODEL  hal_valve
-                                      06191H    0003CH
-                  @@CODEL  comp       061CDH    001A1H
+                                      06187H    0003CH
+                  @@CODEL  comp       061C3H    001A1H
                   @@CODEL  process_make
-                                      0636EH    000BAH
-                  @@CODEL  relay      06428H    001F7H
-                  @@CODEL  valve      0661FH    00158H
-                  @@CODEL  key        06777H    00101H
+                                      06364H    000BAH
+                  @@CODEL  relay      0641EH    001F7H
+                  @@CODEL  valve      06615H    00158H
+                  @@CODEL  key        0676DH    00101H
                   @@CODEL  key_handler
-                                      06878H    001B3H
+                                      0686EH    001B3H
                   @@CODEL  process_key
-                                      06A2BH    0037CH
-                  @@CODEL  level      06DA7H    00262H
-                  @@CODEL  temp       07009H    00243H
+                                      06A21H    0037CH
+                  @@CODEL  level      06D9DH    00262H
+                  @@CODEL  temp       06FFFH    00243H
                   @@CODEL  temp_table
-                                      0724CH    00076H
-                  @@CODEL  timer      072C2H    00134H
+                                      07242H    00076H
+                  @@CODEL  timer      072B8H    00134H
                   @@CODEL  time_short
-                                      073F6H    00129H
+                                      073ECH    00129H
                   @@CODEL  cold_water
-                                      0751FH    002CDH
+                                      07515H    002CDH
                   @@CODEL  hot_water
-                                      077ECH    002C5H
+                                      077E2H    002C5H
                   @@CODEL  room_water
-                                      07AB1H    00114H
-                  @@CODEL  sound      07BC5H    00024H
-                  @@CODEL  heater     07BE9H    000A9H
-                  @@CODEL  hal_led    07C92H    000AEH
+                                      07AA7H    00114H
+                  @@CODEL  sound      07BBBH    00024H
+                  @@CODEL  heater     07BDFH    000A9H
+                  @@CODEL  hal_led    07C88H    000AEH
                   @@CODEL  display_error
-                                      07D40H    0015AH
-                  @@CODEL  r_cg_adc   07E9AH    00047H
+                                      07D36H    0015AH
+                  @@CODEL  r_cg_adc   07E90H    00047H
                   @@CODEL  r_cg_serial
-                                      07EE1H    00233H
+                                      07ED7H    00233H
                   @@CODEL  r_cg_port
-                                      08114H    0003CH
+                                      0810AH    0003CH
                   @@CODEL  level_electrode
-                                      08150H    001FAH
-                  @@CODEL  api_adc    0834AH    0037EH
-                  @@CODEL  crc16      086C8H    00090H
+                                      08146H    001FAH
+                  @@CODEL  api_adc    08340H    0037EH
+                  @@CODEL  crc16      086BEH    00090H
                   @@CODEL  r_cg_timer
-                                      08758H    000E7H
+                                      0874EH    000E7H
                   @@CODEL  hal_serial
-                                      0883FH    0032AH
-                  @@CODEL  comm       08B69H    000BEH
-                  @@CODEL  parser     08C27H    001EEH
+                                      08835H    0032AH
+                  @@CODEL  comm       08B5FH    000BEH
+                  @@CODEL  parser     08C1DH    001EEH
                   @@CODEL  parser_tof
-                                      08E15H    002A5H
-* gap *                               090BAH    06D46H
+                                      08E0BH    002A5H
+* gap *                               090B0H    06D50H
          ??OCDROM                     0FE00H    00200H  CSEG
 
   MEMORY=RAM

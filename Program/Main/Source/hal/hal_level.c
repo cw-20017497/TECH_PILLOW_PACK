@@ -52,10 +52,10 @@ U8 HAL_GetLevelRoomTank(void)
 // tof
 extern I16 tof_sensor[7];
 #define TOF_RANGE_ERROR     22222
-#define TOF_RANGE_OVF       200
-#define TOF_RANGE_HIGH      500
-#define TOF_RANGE_MID       1000
-#define TOF_RANGE_LOW       2000
+#define TOF_RANGE_OVF       100     // 10.0mm
+#define TOF_RANGE_HIGH      300     // 30.0mm
+#define TOF_RANGE_MID       760     // 76.0mm
+//#define TOF_RANGE_LOW       765 
 U8 dbg_level = 0;
 U8 HAL_GetLevelRoomTank(void)
 {
@@ -78,7 +78,7 @@ U8 HAL_GetLevelRoomTank(void)
     {
         mu8Val = LEVEL_DETECT_LOW;
     }
-    else if( tof_sensor[0] <= TOF_RANGE_LOW )
+    else //if( tof_sensor[0] <= TOF_RANGE_LOW )
     {
         mu8Val = 0;
     }
