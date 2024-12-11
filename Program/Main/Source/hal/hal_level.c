@@ -57,12 +57,20 @@ extern I16 tof_sensor[7];
 #define TOF_RANGE_MID       760     // 76.0mm
 //#define TOF_RANGE_LOW       765 
 U8 dbg_level = 0;
+
+#define TOF_STATUS_INIT     0       // 전원 리셋.. 최초 통신 전
+#define TOF_STATUS_RUN      1       // 통신 수신
+#define TOF_STATUS_STOP     2       // 통신 미수신
+extern U8 tof_status;
 U8 HAL_GetLevelRoomTank(void)
 {
     static U8 mu8Val = 0;
 
-
-    if( tof_sensor[0] == TOF_RANGE_ERROR )
+    if( tof_status == TOF_STATUS_INIT )
+    {
+        mu8Val = LEVEL_DETECT_LOW | LEVEL_DETECT_HIGH;
+    }
+    else if( tof_sensor[0] == TOF_RANGE_ERROR )
     {
         mu8Val = LEVEL_DETECT_LOW | LEVEL_DETECT_HIGH | LEVEL_DETECT_OVF;
     }

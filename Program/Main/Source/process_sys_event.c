@@ -137,7 +137,8 @@ static void Evt_1ms_Handler( void )
     StartTimer( TIMER_ID_1MS, 1);
 
     ProcessAdc();
-    ProcessLevelElec();
+
+    ProcessScanLevelElec();
 }
 
 
@@ -150,7 +151,6 @@ static void Evt_10ms_Handler( void )
     ProcessScanKey();
     ProcessKeyEventHandler();
 
-    ProcessScanLevelElec();
 
     ControlValve();
 
@@ -159,6 +159,7 @@ static void Evt_10ms_Handler( void )
 }
 
 
+U32 dbg_cnt_up = 0;
 static void Evt_100ms_Handler(void)
 {
     StartTimer( TIMER_ID_100MS, 100);
@@ -174,8 +175,11 @@ static void Evt_100ms_Handler(void)
     ProcessError();
     ProcessDisplay();
 
+    ControlAirValve();
     UpdateEolTimer();
 
+    ProcessLevelElec();
+    dbg_cnt_up++;
 }
 
 
@@ -225,6 +229,11 @@ static void Evt_40sec_Handler( void )
     }
 }
 
+#define TOF_STATUS_INIT     0       // 전원 리셋.. 최초 통신 전
+#define TOF_STATUS_RUN      1       // 통신 수신
+#define TOF_STATUS_STOP     2       // 통신 미수신
+
+U8 tof_status = TOF_STATUS_INIT;
 U8 InitPowerOn = FALSE;
 U8 PowerOnAck = FALSE;
 

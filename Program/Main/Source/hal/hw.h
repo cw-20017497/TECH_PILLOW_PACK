@@ -71,7 +71,7 @@
 #define  GET_STATUS_VALVE_AIR()       ( P_VALVE_AIR )
 
 
-/* VALE - AIR */
+/* VALE - UNUSED */
 #define  P_VALVE_UNUSED                  P1.0
 #define  OPEN_VALVE_UNUSED()             do{ P_VALVE_UNUSED = 1; }while(0)
 #define  CLOSE_VALVE_UNUSED()            do{ P_VALVE_UNUSED = 0; }while(0)

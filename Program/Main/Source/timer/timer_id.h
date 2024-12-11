@@ -23,6 +23,7 @@ enum
 
     TIMER_ID_TOF,
     TIMER_ID_COMM_TOF_TX,
+    TIMER_ID_COMM_TOF_ERR,
 
     MAX_TIMER_ID_NUM
 };

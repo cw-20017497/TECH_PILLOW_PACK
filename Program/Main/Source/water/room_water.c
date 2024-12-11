@@ -2,6 +2,7 @@
 #include "level.h"
 #include "valve.h"
 #include "error.h"
+#include "timer.h"
 
 
 #define ROOM_FEED_TIME 9000U /* 15min (600*15=9,000)@100ms */
@@ -70,10 +71,27 @@ static void CloseNosFeedValve(void)
 }
 
 /* 정수 탱크 수위 관리 */ 
+#define TOF_STATUS_INIT     0       // 전원 리셋.. 최초 통신 전
+#define TOF_STATUS_RUN      1       // 통신 수신
+#define TOF_STATUS_STOP     2       // 통신 미수신
+extern U8 tof_status;
 void  ControlRoomWaterLevel(void)
 {
     /* Update Watere Level */
     Room.Level = GetTankLevel( LEVEL_ID_ROOM );
+
+    if( IsExpiredTimer( TIMER_ID_COMM_TOF_ERR ) == TIMER_EXPIRE )
+    {
+        DisableTimer( TIMER_ID_COMM_TOF_ERR ); 
+        tof_status = TOF_STATUS_STOP;
+    }
+
+    if( tof_status == TOF_STATUS_INIT 
+        || tof_status == TOF_STATUS_STOP )
+    {
+        CloseValve( VALVE_FEED );
+        return ;
+    }
 
 
     if( IsDetectTankLevel( LEVEL_ID_ROOM, LEVEL_DETECT_HIGH ) == TRUE 
@@ -106,7 +124,7 @@ void  ControlRoomWaterLevel(void)
     if( (Room.Level & LEVEL_DETECT_HIGH ) == LEVEL_DETECT_HIGH )
     {
         CloseValve( VALVE_FEED );
-        CloseValve( VALVE_AIR );
+        //CloseValve( VALVE_AIR );
         return ;
     }
 
@@ -121,14 +139,14 @@ void  ControlRoomWaterLevel(void)
     {
         // 저수위, 즉시 재정수
         OpenValve( VALVE_FEED );
-        OpenValve( VALVE_AIR );
+        //OpenValve( VALVE_AIR );
     }
     else if( Room.Level == LEVEL_MID 
             && Room.FeedTime == 0 )
     {
         // 중수위, 재정수 시간 초과 후 재정수...
         OpenValve( VALVE_FEED );
-        OpenValve( VALVE_AIR );
+        //OpenValve( VALVE_AIR );
     }
 
     /* CHECK FEED TIME DELAY 

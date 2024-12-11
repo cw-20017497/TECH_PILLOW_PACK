@@ -1,4 +1,4 @@
-cscope 15 D:\Work\project_svn\2024\TECH_PILLOW_PACK\Program\Main"               0000322123
+cscope 15 D:\Work\project_svn\2024\TECH_PILLOW_PACK\Program\Main"               0000323827
 	@D:\Work\project_svn\2024\TECH_PILLOW_PACK\Program\Main\Source\api\api_adc.c
 
 7 
@@ -2567,7 +2567,33 @@ I16
 tof_£ns‹
 [7];
 
-147 
+148 
+	#TOF_STATUS_INIT
+ 0
+
+149 
+	#TOF_STATUS_RUN
+ 1
+
+150 
+	#TOF_STATUS_STOP
+ 2
+
+151 
+U8
+ 
+tof_°©us
+;
+
+	)
+
+152 
+U32
+ 
+dbg_˙t_up
+;
+
+153 
 I16
  
 	$P¨£rAck
@@ -2577,7 +2603,11 @@ U8
 buf
 )
 
-164 
+155 
+dbg_˙t_up
+ = 0;
+
+171 
 tof_£ns‹
 [0] = 
 	`GET_UINT_WORD
@@ -2585,21 +2615,35 @@ tof_£ns‹
 buf
 [4], buf[3] );
 
-172  
+180 
+tof_°©us
+ = 
+TOF_STATUS_RUN
+;
+
+181 
+	`SèπTimî
+–
+TIMER_ID_COMM_TOF_ERR
+, 
+	`SEC
+(1) );
+
+182  
 TRUE
 ;
 
-173 
+183 
 	}
 }
 
-175 
+185 
 U8
  
 PowîOnAck
 ;
 
-176 
+186 
 I16
  
 	$P¨£rAckCÆi
@@ -2609,41 +2653,41 @@ U8
 buf
 )
 
-178 
+188 
 PowîOnAck
  = 
 TRUE
 ;
 
-183  
+193  
 TRUE
 ;
 
-184 
+194 
 	}
 }
 
-187 
+197 
 	s_make_li°_t
 
 
-189 
+199 
 U8
  
 	mTy≥
 ;
 
-190 
+200 
 a˘i⁄_t
  
 	mMakePkt
 ;
 
-191 } 
+201 } 
 	tmake_li°_t
 ;
 
-193 
+203 
 I16
  
 MakePktReq
@@ -2653,7 +2697,7 @@ U8
 buf
  );
 
-194 
+204 
 I16
  
 MakePktReqCÆi
@@ -2663,25 +2707,25 @@ U8
 buf
  );
 
-195 c⁄° 
+205 c⁄° 
 make_li°_t
  
 	gmake_li°
 [] =
 
-197 { 
+207 { 
 PKT_TOF_REQ
 , 
 MakePktReq
  },
 
-198 { 
+208 { 
 PKT_TOF_REQ_CALI
 , 
 MakePktReqCÆi
  },
 
-200 
+210 
 	#SZ_TABLE
  ( –
 make_li°
@@ -2691,7 +2735,7 @@ make_li°_t
 
 	)
 
-202 
+212 
 I16
  
 	$MakePkt_TOF
@@ -2705,37 +2749,37 @@ U8
 buf
  )
 
-204 
+214 
 U8
  
 mu8Ty≥
 ;
 
-205 
+215 
 a˘i⁄_t
  
 p_make_pkt
 ;
 
-206 
+216 
 U8
  
 i
 ;
 
-207 
+217 
 I16
  
 Àn
  = -1;
 
-210  
+220  
 i
  = 0; i < 
 SZ_TABLE
 ; i++ )
 
-212 
+222 
 mu8Ty≥
  = 
 make_li°
@@ -2745,7 +2789,7 @@ i
 Ty≥
 ;
 
-213 
+223 
 p_make_pkt
  = 
 make_li°
@@ -2755,7 +2799,7 @@ i
 MakePkt
 ;
 
-215 if–
+225 if–
 mu8Ty≥
  =(
 U8
@@ -2763,13 +2807,13 @@ U8
 p_comm
  )
 
-217 if–
+227 if–
 p_make_pkt
  !
 NULL
  )
 
-219 
+229 
 Àn
  = 
 	`p_make_pkt
@@ -2777,21 +2821,21 @@ NULL
 buf
  );
 
-225  
+235  
 Àn
 ;
 
-226 
+236 
 	}
 }
 
-230 
+240 
 U8
  
 tof_°¨t
 ;
 
-231 
+241 
 I16
  
 	$MakePktReq
@@ -2801,13 +2845,13 @@ U8
 buf
  )
 
-233 
+243 
 I16
  
 mi16Lí
  = 0;
 
-236 
+246 
 buf
 [ 
 mi16Lí
@@ -2815,7 +2859,7 @@ mi16Lí
 STX
 ;
 
-239 
+249 
 buf
 [ 
 mi16Lí
@@ -2823,7 +2867,7 @@ mi16Lí
 PKT_TOF_REQ
 ;
 
-242 
+252 
 buf
 [ 
 mi16Lí
@@ -2831,19 +2875,19 @@ mi16Lí
 tof_°¨t
 ;
 
-245 
+255 
 buf
 [ 
 mi16Lí
 ++ ] = 0;
 
-246 
+256 
 buf
 [ 
 mi16Lí
 ++ ] = 0;
 
-248 
+258 
 buf
 [ 
 mi16Lí
@@ -2851,15 +2895,15 @@ mi16Lí
 ETX
 ;
 
-250  
+260  
 mi16Lí
 ;
 
-251 
+261 
 	}
 }
 
-253 
+263 
 I16
  
 	$MakePktReqCÆi
@@ -2869,13 +2913,13 @@ U8
 buf
  )
 
-255 
+265 
 I16
  
 mi16Lí
  = 0;
 
-258 
+268 
 buf
 [ 
 mi16Lí
@@ -2883,7 +2927,7 @@ mi16Lí
 STX
 ;
 
-261 
+271 
 buf
 [ 
 mi16Lí
@@ -2891,19 +2935,19 @@ mi16Lí
 PKT_TOF_REQ_CALI
 ;
 
-265 
+275 
 buf
 [ 
 mi16Lí
 ++ ] = 0;
 
-266 
+276 
 buf
 [ 
 mi16Lí
 ++ ] = 0;
 
-268 
+278 
 buf
 [ 
 mi16Lí
@@ -2911,11 +2955,11 @@ mi16Lí
 ETX
 ;
 
-270  
+280  
 mi16Lí
 ;
 
-271 
+281 
 	}
 }
 
@@ -18485,66 +18529,60 @@ tof_£ns‹
 
 55 
 	#TOF_RANGE_OVF
- 200
-
-	)
+ 100
 
 56 
 	#TOF_RANGE_HIGH
- 500
-
-	)
+ 300
 
 57 
 	#TOF_RANGE_MID
- 1000
-
-	)
-
-58 
-	#TOF_RANGE_LOW
- 2000
-
-	)
+ 760
 
 59 
 U8
  
-	gdbg_Àvñ
+dbg_Àvñ
  = 0;
 
-60 
+	)
+
+61 
+	#TOF_STATUS_INIT
+ 0
+
+62 
+	#TOF_STATUS_RUN
+ 1
+
+63 
+	#TOF_STATUS_STOP
+ 2
+
+64 
+U8
+ 
+tof_°©us
+;
+
+	)
+
+65 
 U8
  
 	$HAL_GëLevñRoomT™k
 ()
 
-62 
+67 
 U8
  
 mu8VÆ
  = 0;
 
-65 if–
-tof_£ns‹
-[0] =
-TOF_RANGE_ERROR
- )
-
-67 
-mu8VÆ
- = 
-LEVEL_DETECT_LOW
- | 
-LEVEL_DETECT_HIGH
- | 
-LEVEL_DETECT_OVF
-;
-
-69 if–
-tof_£ns‹
-[0] <
-TOF_RANGE_OVF
+69 if–
+tof_°©us
+ =
+TOF_STATUS_INIT
  )
 
 71 
@@ -18553,14 +18591,12 @@ mu8VÆ
 LEVEL_DETECT_LOW
  | 
 LEVEL_DETECT_HIGH
- | 
-LEVEL_DETECT_OVF
 ;
 
 73 if–
 tof_£ns‹
-[0] <
-TOF_RANGE_HIGH
+[0] =
+TOF_RANGE_ERROR
  )
 
 75 
@@ -18569,81 +18605,107 @@ mu8VÆ
 LEVEL_DETECT_LOW
  | 
 LEVEL_DETECT_HIGH
+ | 
+LEVEL_DETECT_OVF
 ;
 
 77 if–
 tof_£ns‹
 [0] <
-TOF_RANGE_MID
+TOF_RANGE_OVF
  )
 
 79 
 mu8VÆ
  = 
 LEVEL_DETECT_LOW
+ | 
+LEVEL_DETECT_HIGH
+ | 
+LEVEL_DETECT_OVF
 ;
 
 81 if–
 tof_£ns‹
 [0] <
-TOF_RANGE_LOW
+TOF_RANGE_HIGH
  )
 
 83 
 mu8VÆ
+ = 
+LEVEL_DETECT_LOW
+ | 
+LEVEL_DETECT_HIGH
+;
+
+85 if–
+tof_£ns‹
+[0] <
+TOF_RANGE_MID
+ )
+
+87 
+mu8VÆ
+ = 
+LEVEL_DETECT_LOW
+;
+
+91 
+mu8VÆ
  = 0;
 
-86 
+94 
 dbg_Àvñ
  = 
 mu8VÆ
 ;
 
-88  
+96  
 mu8VÆ
 ;
 
-89 
+97 
 	}
 }
 
-91 
+99 
 U8
  
 	$HAL_GëLevñHŸT™k
 ()
 
-93 
+101 
 U8
  
 mu8VÆ
  = 0;
 
-95 if–
+103 if–
 	`GET_ROOM_TANK_HIGH
 (Ë=
 HIGH
  )
 
-97 
+105 
 mu8VÆ
  |
 LEVEL_DETECT_HIGH
 ;
 
-100 if–
+108 if–
 	`GET_ROOM_TANK_LOW
 (Ë=
 HIGH
  )
 
-102 
+110 
 mu8VÆ
  |
 LEVEL_DETECT_LOW
 ;
 
-106 if–
+114 if–
 	`GëLevñEÀcSètus
 (
 LEVEL_ELEC_ID_HOT_TANK
@@ -18651,61 +18713,61 @@ LEVEL_ELEC_ID_HOT_TANK
 LEVEL_STATUS_DETECT
  )
 
-108 
+116 
 mu8VÆ
  |
 LEVEL_DETECT_LOW
 ;
 
-109 
+117 
 mu8VÆ
  |
 LEVEL_DETECT_HIGH
 ;
 
-112  
+120  
 mu8VÆ
 ;
 
-114 
+122 
 	}
 }
 
-117 
+125 
 U8
  
 	$HAL_GëLevñCﬁdT™k
 ()
 
-119 
+127 
 U8
  
 mu8VÆ
  = 0;
 
-122 if–
+130 if–
 	`GET_COLD_TANK_HIGH
 (Ë=
 HIGH
  )
 
-124 
+132 
 mu8VÆ
  |
 LEVEL_DETECT_LOW
 ;
 
-125 
+133 
 mu8VÆ
  |
 LEVEL_DETECT_HIGH
 ;
 
-128  
+136  
 mu8VÆ
 ;
 
-129 
+137 
 	}
 }
 
@@ -26778,58 +26840,66 @@ TIMER_ID_DEBUG
 , 100);
 
 29 
+	`SèπTimî
+–
+TIMER_ID_COMM_TOF_ERR
+, 
+	`SEC
+(10) );
+
+30 
 	}
 }
 
-33 
+34 
 	$maö
 ( )
 
-35 
+36 
 	`Dñay_MS
-( 500 );
+( 1500 );
 
-37 
+38 
 	`R_WDT_Re°¨t
-();
-
-39 
-	`InôSy°em
 ();
 
 40 
-	`InôSèπTimîs
+	`InôSy°em
 ();
 
 41 
+	`InôSèπTimîs
+();
+
+42 
 	`EI
 ();
 
-44 
+45 
 	`R_WDT_Re°¨t
 ();
 
-45 
+46 
 	`InôEïrom
 ();
 
-49 
+50 
 	`R_WDT_Re°¨t
 ();
 
-51 
+52 
 	`Pro˚ssEvítH™dÀr
 ();
 
-54 
+55 
 	`RecvPackëH™dÀr
 ();
 
-55 
+56 
 	`SídPackëH™dÀr
 ();
 
-57 
+58 
 	}
 }
 
@@ -27523,34 +27593,30 @@ TIMER_ID_1MS
 	`Pro˚ssAdc
 ();
 
-140 
-	`Pro˚ssLevñEÀc
+141 
+	`Pro˚ssSˇnLevñEÀc
 ();
 
-141 
+142 
 	}
 }
 
-144 
+145 
 	$Evt_10ms_H™dÀr
 ( )
 
-146 
+147 
 	`SèπTimî
 –
 TIMER_ID_10MS
 , 10);
 
-150 
+151 
 	`Pro˚ssSˇnKey
 ();
 
-151 
+152 
 	`Pro˚ssKeyEvítH™dÀr
-();
-
-153 
-	`Pro˚ssSˇnLevñEÀc
 ();
 
 155 
@@ -27565,57 +27631,75 @@ TIMER_ID_10MS
 	}
 }
 
-162 
+162 
+U32
+ 
+	gdbg_˙t_up
+ = 0;
+
+163 
 	$Evt_100ms_H™dÀr
 ()
 
-164 
+165 
 	`SèπTimî
 –
 TIMER_ID_100MS
 , 100);
 
-166 
+167 
 	`Pro˚ssTemp
 ();
 
-168 
+169 
 	`Pro˚ssT™kLevñ
 ();
 
-170 
+171 
 	`C⁄åﬁRoomW©îLevñ
 ();
 
-171 
+172 
 	`C⁄åﬁCﬁdW©îLevñ
 ();
 
-172 
+173 
 	`C⁄åﬁHŸW©îLevñ
 ();
 
-174 
+175 
 	`Pro˚ssEº‹
 ();
 
-175 
+176 
 	`Pro˚ssDi•œy
 ();
 
-177 
-	`Upd©eEﬁTimî
+178 
+	`C⁄åﬁAúVÆve
 ();
 
 179 
+	`Upd©eEﬁTimî
+();
+
+181 
+	`Pro˚ssLevñEÀc
+();
+
+182 
+dbg_˙t_up
+++;
+
+183 
 	}
 }
 
-182 
+186 
 	$Evt_1£c_H™dÀr
 ( )
 
-184 
+188 
 	`SèπTimî
 –
 TIMER_ID_1SEC
@@ -27623,17 +27707,17 @@ TIMER_ID_1SEC
 	`SEC
 (1) );
 
-186 #i‡
+190 #i‡
 CONFIG_TEST_COLD_SENSOR
 
 
-187 if–
+191 if–
 	`GëCﬁdW©îC⁄figMake
 (Ë=
 TRUE
  )
 
-189 
+193 
 	`Tu∫OnTempSís‹
 –
 TEMP_ID_COLD_WATER
@@ -27641,51 +27725,51 @@ TEMP_ID_COLD_WATER
 DEFAULT_TEMP_READ_TIME
  );
 
-194 
+198 
 	`MakeCﬁdW©î
 ();
 
-197 
+201 
 	`MakeHŸW©î
 ();
 
-198 
+202 
 	`Pro˚ssUnu£dSavög
 ();
 
-201 
+205 
 	`Pro˚ssMake
 ();
 
-203 
+207 
 	`C⁄åﬁRñayEx˛usive
 ();
 
-207 
+211 
 	`Pro˚ssEïrom
 ();
 
-209 
+213 
 	`Upd©eF˘Timî
 ();
 
-213 
+217 
 	`Upd©eTimeSh‹tTimî
 ();
 
-214 
+218 
 	`Pro˚ssTimeSh‹t
 ();
 
-215 
+219 
 	}
 }
 
-217 
+221 
 	$Evt_40£c_H™dÀr
 ( )
 
-219 
+223 
 	`SèπTimî
 –
 TIMER_ID_40SEC
@@ -27693,13 +27777,13 @@ TIMER_ID_40SEC
 	`SEC
 (40) );
 
-222 if–
+226 if–
 	`GëCﬁdW©îC⁄figMake
 (Ë=
 TRUE
  )
 
-224 
+228 
 	`Tu∫OnTempSís‹
 –
 TEMP_ID_COLD_WATER
@@ -27707,11 +27791,35 @@ TEMP_ID_COLD_WATER
 DEFAULT_TEMP_READ_TIME
  );
 
-226 
+230 
 	}
 }
 
-228 
+232 
+	#TOF_STATUS_INIT
+ 0
+
+233 
+	#TOF_STATUS_RUN
+ 1
+
+234 
+	#TOF_STATUS_STOP
+ 2
+
+235 
+
+	)
+
+236 
+U8
+ 
+	gtof_°©us
+ = 
+TOF_STATUS_INIT
+;
+
+237 
 U8
  
 	gInôPowîOn
@@ -27719,7 +27827,7 @@ U8
 FALSE
 ;
 
-229 
+238 
 U8
  
 	gPowîOnAck
@@ -27727,7 +27835,7 @@ U8
 FALSE
 ;
 
-231 
+240 
 U8
  
 	gtof_°¨t
@@ -27735,57 +27843,57 @@ U8
 TRUE
 ;
 
-232 
+241 
 	#TOF_RANGE_ERROR
  22222
 
 	)
 
-233 
+242 
 I16
  
 	gtof_£ns‹
 [7]=
 
-235 
+244 
 TOF_RANGE_ERROR
 ,
 
-236 
+245 
 TOF_RANGE_ERROR
 ,
 
-237 
+246 
 TOF_RANGE_ERROR
 ,
 
-238 
+247 
 TOF_RANGE_ERROR
 ,
 
-239 
+248 
 TOF_RANGE_ERROR
 ,
 
-240 
+249 
 TOF_RANGE_ERROR
 ,
 
-241 
+250 
 TOF_RANGE_ERROR
 
 
-243 
+252 
 U16
  
 	gtimî_dñay
  = 100;
 
-245 
+254 
 	$Evt_TOF_H™dÀr
 ( )
 
-267 
+276 
 	`SëCommHódî
 –
 COMM_ID_TOF
@@ -27793,13 +27901,13 @@ COMM_ID_TOF
 PKT_TOF_REQ
  );
 
-268 
+277 
 	`SèπTimî
 –
 TIMER_ID_COMM_UART_1_TX
 , 0 );
 
-270 
+279 
 	`SèπTimî
 –
 TIMER_ID_TOF
@@ -27807,15 +27915,15 @@ TIMER_ID_TOF
 timî_dñay
  );
 
-273 
+282 
 	}
 }
 
-275 
+284 
 	$Evt_1mö_H™dÀr
 ( )
 
-277 
+286 
 	`SèπTimî
 –
 TIMER_ID_1MIN
@@ -27823,123 +27931,95 @@ TIMER_ID_1MIN
 	`SEC
 (60) );
 
-278 
+287 
 	}
 }
 
-280 
+289 
 	$Evt_Debug_H™dÀr
 ( )
 
-282 
+291 
 	`SèπTimî
 –
 TIMER_ID_COMM_DEBUG_TX
 , 0 );
 
-283 
+292 
 	`SèπTimî
 –
 TIMER_ID_DEBUG
 , 150 );
 
-285 
+294 
 	}
 }
 
-287 
+296 
 	$InôSy°em
 ()
 
-290 
+299 
 	`InôRñay
 ();
 
-291 
+300 
 	`InôVÆve
 ();
 
-292 
+301 
 	`InôKey
 ();
 
-293 
+302 
 	`InôAdc
 ();
 
-294 
+303 
 	`HAL_InôLed
 ();
 
-295 
+304 
 	`HAL_InôComm
 ();
 
-297 
+306 
 	`InôDi•œy
 ();
 
-301 
+310 
 	`InôRoomW©î
 ();
 
-302 
+311 
 	`InôCﬁdW©î
 ();
 
-303 
+312 
 	`InôHŸW©î
 ();
 
-306 
+315 
 	`InôEº‹Li°
 ();
 
-308 
+317 
 	`InôPro˚ssMake
 ();
 
-310 
+319 
 	`InôEﬁ
 ();
 
-311 
+320 
 	`InôF˘
 ();
 
-312 
+321 
 	`InôTimeSh‹t
 ();
 
-316 
-	`Tu∫OnTempSís‹
-–
-TEMP_ID_COLD_WATER
-, 
-DEFAULT_INIT_TEMP_READ_TIME
- );
-
-319 
-	`Regi°îTimîISR
-–
-INTT_Ba£Time_H™dÀr
- );
-
-320 
-	}
-}
-
-322 
-	$Evt_FCT_1ms_H™dÀr
-( )
-
-324 
-	`SèπTimî
-–
-TIMER_ID_1MS
-, 1);
-
-326 
+325 
 	`Tu∫OnTempSís‹
 –
 TEMP_ID_COLD_WATER
@@ -27948,16 +28028,18 @@ DEFAULT_INIT_TEMP_READ_TIME
  );
 
 328 
-	`Pro˚ssAdc
-();
+	`Regi°îTimîISR
+–
+INTT_Ba£Time_H™dÀr
+ );
 
 329 
 	}
 }
 
 331 
-	$Evt_EOL_1ms_H™dÀr
-()
+	$Evt_FCT_1ms_H™dÀr
+( )
 
 333 
 	`SèπTimî
@@ -27982,140 +28064,106 @@ DEFAULT_INIT_TEMP_READ_TIME
 }
 
 340 
-	$Evt_EOL_10ms_H™dÀr
+	$Evt_EOL_1ms_H™dÀr
 ()
 
 342 
+	`SèπTimî
+–
+TIMER_ID_1MS
+, 1);
+
+344 
+	`Tu∫OnTempSís‹
+–
+TEMP_ID_COLD_WATER
+, 
+DEFAULT_INIT_TEMP_READ_TIME
+ );
+
+346 
+	`Pro˚ssAdc
+();
+
+347 
+	}
+}
+
+349 
+	$Evt_EOL_10ms_H™dÀr
+()
+
+351 
 U8
  
 mu8EﬁMode
 ;
 
-344 
+353 
 	`SèπTimî
 –
 TIMER_ID_10MS
 , 10);
 
-347 
+356 
 	`Pro˚ssSˇnKey
 ();
 
-348 
+357 
 	`Pro˚ssKeyEvítH™dÀr
 ();
 
-351 
+360 
 	`C⁄åﬁVÆve
 ();
 
-353 
+362 
 	`C⁄åﬁRñayC⁄cuºít
 ();
 
-355 
+364 
 	}
 }
 
-357 
+366 
 	$Evt_EOL_100ms_H™dÀr
 ()
 
-359 
+368 
 	`SèπTimî
 –
 TIMER_ID_100MS
 , 100);
 
-361 
+370 
 	`Pro˚ssT™kLevñ
 ();
 
-363 
+372 
 	`Pro˚ssDi•œy
 ();
 
-366 
+375 
 	`Upd©eEﬁTimî
 ();
 
-367 
+376 
 	`Pro˚ssEﬁ
 ();
 
-369 
+378 
 	`C⁄åﬁRñayEx˛usive
 ();
-
-370 
-	}
-}
-
-373 
-	$Evt_EOL_1£c_H™dÀr
-( )
-
-375 
-	`SèπTimî
-–
-TIMER_ID_1SEC
-, 
-	`SEC
-(1) );
 
 379 
 	}
 }
 
-383 
-	$Evt_FCT_10ms_H™dÀr
+382 
+	$Evt_EOL_1£c_H™dÀr
 ( )
 
-385 
-	`SèπTimî
-–
-TIMER_ID_10MS
-, 10);
-
-388 
-	`Pro˚ssSˇnKey
-();
-
-389 
-	`Pro˚ssKeyEvítH™dÀr
-();
-
-391 
-	`Pro˚ssF˘LﬂdTe°
-();
-
-393 
-	`C⁄åﬁVÆve
-();
-
-394 
-	}
-}
-
-397 
-	$Evt_FCT_100ms_H™dÀr
-()
-
-399 
-	`SèπTimî
-–
-TIMER_ID_100MS
-, 100);
-
-400 
-	}
-}
-
-402 
-	$Evt_FCT_1£c_H™dÀr
-( )
-
-404 
+384 
 	`SèπTimî
 –
 TIMER_ID_1SEC
@@ -28123,23 +28171,83 @@ TIMER_ID_1SEC
 	`SEC
 (1) );
 
-406 
+388 
+	}
+}
+
+392 
+	$Evt_FCT_10ms_H™dÀr
+( )
+
+394 
+	`SèπTimî
+–
+TIMER_ID_10MS
+, 10);
+
+397 
+	`Pro˚ssSˇnKey
+();
+
+398 
+	`Pro˚ssKeyEvítH™dÀr
+();
+
+400 
+	`Pro˚ssF˘LﬂdTe°
+();
+
+402 
+	`C⁄åﬁVÆve
+();
+
+403 
+	}
+}
+
+406 
+	$Evt_FCT_100ms_H™dÀr
+()
+
+408 
+	`SèπTimî
+–
+TIMER_ID_100MS
+, 100);
+
+409 
+	}
+}
+
+411 
+	$Evt_FCT_1£c_H™dÀr
+( )
+
+413 
+	`SèπTimî
+–
+TIMER_ID_1SEC
+, 
+	`SEC
+(1) );
+
+415 
 	`Upd©eF˘Timî
 ();
 
-407 
+416 
 	`C⁄åﬁRñayEx˛usive
 ();
 
-408 
+417 
 	`C⁄åﬁRñayC⁄cuºít
 ();
 
-410 
+419 
 	`Pro˚ssF˘
 ();
 
-411 
+420 
 	}
 }
 
@@ -38229,11 +38337,15 @@ __TIMER_ID_H__
 	mTIMER_ID_COMM_TOF_TX
 ,
 
-27 
+26 
+	mTIMER_ID_COMM_TOF_ERR
+,
+
+28 
 	mMAX_TIMER_ID_NUM
 
 
-30 
+31 
 	#TIMER_ID_ADC_INTERVAL
  10UL
 
@@ -40229,65 +40341,69 @@ MakeCﬁdW©î
 	~"vÆve.h
 "
 
-13 
+11 
+	~"ªœy.h
+"
+
+14 
 	#USE_SAVING_TEMP
  0
 
 	)
 
-14 
+15 
 	#CONFIG_HOT_WATER_AIRFLOW
  0
 
-15 
+16 
 
 	)
 
-17 
+18 
 	#PROTECT_HOT_TEMP
  98.0f
 
 	)
 
-19 
+20 
 	#WAIT_TIME
  5
 
-20 
+21 
 	#AIR_FLOW_TIME
  3000
 
-21 
+22 
 	#WAIT_HEATING_TIME
  900
 
-22 
+23 
 
 	)
 
-25 
+26 
 	#OVER_TEMP
  0
 
 	)
 
-26 
+27 
 	#UNDER_TEMP
  1
 
 	)
 
-27 
+28 
 	#DEFAULT_TEMP_TIME
  5
 
-28 
+29 
 	#AMBI_LIMIT_TEMP
  20.0f
 
 	)
 
-31 c⁄° 
+32 c⁄° 
 TEMP_T
  
 	gOnTempLi°
@@ -40295,7 +40411,7 @@ TEMP_T
 ALTITUDE_LEVEL_NUM
  ] = { 82.0f, 79.0f, 68.0f, 53.0f };
 
-32 c⁄° 
+33 c⁄° 
 TEMP_T
  
 	gOffTempLi°
@@ -40303,17 +40419,17 @@ TEMP_T
 ALTITUDE_LEVEL_NUM
  ] = { 93.0f, 90.0f, 84.0f, 58.0f };
 
-35 
+36 
 HŸW©î_T
  
 	gHŸ
 ;
 
-38 
+39 
 	$InôHŸW©î
 ()
 
-40 
+41 
 HŸ
 .
 InôWaôTime
@@ -40321,7 +40437,7 @@ InôWaôTime
 WAIT_TIME
 ;
 
-41 
+42 
 HŸ
 .
 InôFuŒ
@@ -40329,7 +40445,7 @@ InôFuŒ
 FALSE
 ;
 
-42 
+43 
 HŸ
 .
 Levñ
@@ -40337,7 +40453,7 @@ Levñ
 LEVEL_LOW
 ;
 
-44 
+45 
 HŸ
 .
 C⁄figMake
@@ -40345,7 +40461,7 @@ C⁄figMake
 TRUE
 ;
 
-45 
+46 
 HŸ
 .
 Make
@@ -40353,7 +40469,7 @@ Make
 FALSE
 ;
 
-46 
+47 
 HŸ
 .
 MakeDñay
@@ -40361,7 +40477,7 @@ MakeDñay
 WAIT_HEATING_TIME
 ;
 
-48 
+49 
 HŸ
 .
 A…ôude
@@ -40369,7 +40485,7 @@ A…ôude
 ALTITUDE_LEVEL_0
 ;
 
-50 
+51 
 HŸ
 .
 Savög
@@ -40379,7 +40495,7 @@ C⁄fig
 FALSE
 ;
 
-51 
+52 
 HŸ
 .
 Savög
@@ -40389,7 +40505,7 @@ Run
 FALSE
 ;
 
-53 
+54 
 HŸ
 .
 Savög
@@ -40399,7 +40515,7 @@ OnTime
 UNUSED_SAVING_ON_10HOUR
 ;
 
-54 
+55 
 HŸ
 .
 Savög
@@ -40407,7 +40523,7 @@ Savög
 RunTime
  = 0U;
 
-56 
+57 
 HŸ
 .
 Savög
@@ -40417,7 +40533,7 @@ TempSètus
 OVER_TEMP
 ;
 
-57 
+58 
 HŸ
 .
 Savög
@@ -40427,7 +40543,7 @@ TempUndîTime
 DEFAULT_TEMP_TIME
 ;
 
-58 
+59 
 HŸ
 .
 Savög
@@ -40437,11 +40553,11 @@ TempOvîTime
 DEFAULT_TEMP_TIME
 ;
 
-60 
+61 
 	}
 }
 
-62 
+63 
 	$GëHŸW©îD©a
 –
 HŸW©î_T
@@ -40449,7 +40565,7 @@ HŸW©î_T
 pD©a
  )
 
-64 
+65 
 	`mem˝y
 –
 pD©a
@@ -40459,11 +40575,11 @@ HŸ
 HŸW©î_T
  ));
 
-65 
+66 
 	}
 }
 
-67 
+68 
 	$SëHŸW©îInôFuŒ
 (
 U8
@@ -40471,7 +40587,7 @@ U8
 mu8VÆ
  )
 
-69 
+70 
 HŸ
 .
 InôFuŒ
@@ -40479,27 +40595,27 @@ InôFuŒ
 mu8VÆ
 ;
 
-70 
+71 
 	}
 }
 
-72 
+73 
 U8
  
 	$GëHŸW©îInôFuŒ
 ()
 
-74  
+75  
 HŸ
 .
 InôFuŒ
 ;
 
-75 
+76 
 	}
 }
 
-78 
+79 
 	$SëHŸW©îUnu£dOnTime
 (
 U16
@@ -40507,7 +40623,7 @@ U16
 mu16OnTime
 )
 
-80 
+81 
 HŸ
 .
 Savög
@@ -40517,17 +40633,17 @@ OnTime
 mu16OnTime
 ;
 
-81 
+82 
 	}
 }
 
-83 
+84 
 U16
  
 	$GëHŸW©îUnu£dOnTime
 ()
 
-85  
+86  
 HŸ
 .
 Savög
@@ -40535,11 +40651,11 @@ Savög
 OnTime
 ;
 
-86 
+87 
 	}
 }
 
-89 
+90 
 	$SëHŸW©îLevñ
 (
 U8
@@ -40547,7 +40663,7 @@ U8
 mu8VÆ
  )
 
-91 
+92 
 HŸ
 .
 Levñ
@@ -40555,27 +40671,27 @@ Levñ
 mu8VÆ
 ;
 
-92 
+93 
 	}
 }
 
-94 
+95 
 U8
  
 	$GëHŸW©îLevñ
 ()
 
-96  
+97  
 HŸ
 .
 Levñ
 ;
 
-97 
+98 
 	}
 }
 
-99 
+100 
 	$SëHŸW©îC⁄figMake
 (
 U8
@@ -40583,7 +40699,7 @@ U8
 mu8VÆ
  )
 
-101 if–
+102 if–
 mu8VÆ
  !
 TRUE
@@ -40591,7 +40707,7 @@ TRUE
 FALSE
  )
 
-105 
+106 
 HŸ
 .
 C⁄figMake
@@ -40599,33 +40715,33 @@ C⁄figMake
 mu8VÆ
 ;
 
-107 
+108 
 	`SaveEïromId
 –
 EEP_ID_CONF_MAKE_HOT
  );
 
-108 
+109 
 	}
 }
 
-110 
+111 
 U8
  
 	$GëHŸW©îC⁄figMake
 ()
 
-112  
+113  
 HŸ
 .
 C⁄figMake
 ;
 
-113 
+114 
 	}
 }
 
-116 
+117 
 	$SëHŸW©îMake
 (
 U8
@@ -40633,7 +40749,7 @@ U8
 mu8VÆ
  )
 
-118 
+119 
 HŸ
 .
 Make
@@ -40641,27 +40757,27 @@ Make
 mu8VÆ
 ;
 
-119 
+120 
 	}
 }
 
-121 
+122 
 U8
  
 	$GëHŸW©îMake
 ()
 
-123  
+124  
 HŸ
 .
 Make
 ;
 
-124 
+125 
 	}
 }
 
-127 
+128 
 	$SëHŸW©îA…idue
 (
 U8
@@ -40669,13 +40785,13 @@ U8
 mu8VÆ
  )
 
-129 if–
+130 if–
 mu8VÆ
  < 
 ALTITUDE_LEVEL_NUM
  )
 
-131 
+132 
 HŸ
 .
 A…ôude
@@ -40683,51 +40799,51 @@ A…ôude
 mu8VÆ
 ;
 
-133 
+134 
 	`SaveEïromId
 –
 EEP_ID_HOT_ALTITUDE
  );
 
-135 
+136 
 	}
 }
 
-137 
+138 
 U8
  
 	$GëHŸW©îA…idue
 ()
 
-139  
+140  
 HŸ
 .
 A…ôude
 ;
 
-140 
+141 
 	}
 }
 
-145 
+146 
 	$Upd©eHŸMakeDñay
 ()
 
-147 
+148 
 HŸ
 .
 MakeDñay
  = 0U;
 
-148 
+149 
 	}
 }
 
-151 
+152 
 	$C⁄åﬁHŸW©îLevñ
 ()
 
-154 
+155 
 HŸ
 .
 Levñ
@@ -40737,7 +40853,7 @@ Levñ
 LEVEL_ID_HOT
  );
 
-156 if–
+157 if–
 HŸ
 .
 Levñ
@@ -40745,7 +40861,7 @@ Levñ
 LEVEL_HIGH
  )
 
-158 
+159 
 HŸ
 .
 InôFuŒ
@@ -40753,27 +40869,27 @@ InôFuŒ
 TRUE
 ;
 
-160 
+161 
 	}
 }
 
-163 
+164 
 U8
  
 	$IsVÆidMake
 ()
 
-165 if–
+166 if–
 HŸ
 .
 InôWaôTime
  != 0 )
 
-167  
+168  
 FALSE
 ;
 
-171 if–
+172 if–
 HŸ
 .
 C⁄figMake
@@ -40781,11 +40897,11 @@ C⁄figMake
 FALSE
  )
 
-173  
+174  
 FALSE
  ;
 
-176 if–
+177 if–
 HŸ
 .
 InôFuŒ
@@ -40793,21 +40909,21 @@ InôFuŒ
 FALSE
  )
 
-178  
+179  
 FALSE
 ;
 
-182 if–
+183 if–
 	`IsEº‹Ty≥HŸW©î
 (Ë=
 TRUE
  )
 
-184  
+185  
 FALSE
 ;
 
-188 if–
+189 if–
 HŸ
 .
 Levñ
@@ -40815,7 +40931,7 @@ Levñ
 LEVEL_MID
 
 
-189 || 
+190 || 
 HŸ
 .
 Levñ
@@ -40823,19 +40939,19 @@ Levñ
 LEVEL_HIGH
  )
 
-191  
+192  
 TRUE
  ;
 
-194  
+195  
 FALSE
 ;
 
-195 
+196 
 	}
 }
 
-197 
+198 
 TEMP_T
  
 	$GëT¨gëHŸOnTemp
@@ -40845,27 +40961,27 @@ U8
 mu8A…ôude
 )
 
-199 if–
+200 if–
 mu8A…ôude
  >
 ALTITUDE_LEVEL_NUM
  )
 
-201 
+202 
 mu8A…ôude
  = 0;
 
-204  
+205  
 OnTempLi°
 [ 
 mu8A…ôude
  ];
 
-205 
+206 
 	}
 }
 
-207 
+208 
 TEMP_T
  
 	$GëT¨gëHŸOffTemp
@@ -40875,33 +40991,33 @@ U8
 mu8A…ôude
  )
 
-209 if–
+210 if–
 mu8A…ôude
  >
 ALTITUDE_LEVEL_NUM
  )
 
-211 
+212 
 mu8A…ôude
  = 0;
 
-214  
+215  
 OffTempLi°
 [ 
 mu8A…ôude
  ];
 
-215 
+216 
 	}
 }
 
-217 
+218 
 U8
  
 	$CheckLevñOnHótög
 ()
 
-219 
+220 
 U8
  
 mu8PªvSètus
@@ -40909,13 +41025,13 @@ mu8PªvSètus
 LEVEL_LOW
 ;
 
-220 
+221 
 U8
  
 mu8CurSètus
 ;
 
-224 
+225 
 mu8CurSètus
  = 
 	`GëT™kLevñ
@@ -40923,25 +41039,25 @@ mu8CurSètus
 LEVEL_ID_ROOM
  );
 
-225 if–
+226 if–
 mu8PªvSètus
  !
 mu8CurSètus
  )
 
-227 if–
+228 if–
 mu8PªvSètus
  =
 LEVEL_LOW
 
 
-228 && 
+229 && 
 mu8CurSètus
  !
 LEVEL_LOW
  )
 
-230 
+231 
 HŸ
 .
 MakeDñay
@@ -40949,19 +41065,19 @@ MakeDñay
 WAIT_HEATING_TIME
 ;
 
-232 
+233 
 mu8PªvSètus
  = 
 mu8CurSètus
 ;
 
-237 if–
+238 if–
 	`GëRoomW©îInôFuŒ
 (Ë=
 FALSE
  )
 
-239 
+240 
 HŸ
 .
 MakeDñay
@@ -40969,23 +41085,23 @@ MakeDñay
 WAIT_HEATING_TIME
 ;
 
-241  
+242  
 FALSE
 ;
 
-245 if–
+246 if–
 HŸ
 .
 MakeDñay
  != 0 )
 
-247 
+248 
 HŸ
 .
 MakeDñay
 --;
 
-248 
+249 
 HŸ
 .
 Make
@@ -40993,35 +41109,35 @@ Make
 FALSE
 ;
 
-250  
+251  
 FALSE
 ;
 
-253  
+254  
 TRUE
 ;
 
-254 
+255 
 	}
 }
 
-256 
+257 
 	$Upd©eTime
 ()
 
-258 if–
+259 if–
 HŸ
 .
 InôWaôTime
  != 0 )
 
-260 
+261 
 HŸ
 .
 InôWaôTime
 --;
 
-264 if–
+265 if–
 HŸ
 .
 Savög
@@ -41031,7 +41147,7 @@ Run
 TRUE
  )
 
-266 if–
+267 if–
 HŸ
 .
 Savög
@@ -41039,7 +41155,7 @@ Savög
 RunTime
  < 60000U )
 
-268 
+269 
 HŸ
 .
 Savög
@@ -41047,19 +41163,151 @@ Savög
 RunTime
 ++;
 
-271 
+272 
 	}
 }
 
-273 
+277 
+	#HEAT_TIME
+ 1800
+
+278 
+	#AIR_VALVE_ON_TIME
+ 50
+
+279 
+U16
+ 
+HótögTime
+ = 
+HEAT_TIME
+;
+
+	)
+
+280 
+U16
+ 
+	gVÆveO≥nTime
+ = 0;
+
+282 
+	$C⁄åﬁAúVÆve
+()
+
+284 
+U8
+ 
+mu8OnOff
+ = 
+OFF
+;
+
+287 if–
+	`IsTu∫OnRñay
+–
+RELAY_HEATER
+ ) =
+TRUE
+
+
+288 && 
+	`IsO≥nVÆve
+–
+VALVE_AIR
+ ) =
+FALSE
+ )
+
+290 if–
+HótögTime
+ != 0 )
+
+292 
+HótögTime
+--;
+
+296 
+VÆveO≥nTime
+ = 
+AIR_VALVE_ON_TIME
+;
+
+301 
+HótögTime
+ = 
+HEAT_TIME
+;
+
+306 if–
+	`IsO≥nVÆve
+–
+VALVE_FEED
+ ) =
+TRUE
+ )
+
+308 
+mu8OnOff
+ = 
+ON
+;
+
+312 
+mu8OnOff
+ = 
+OFF
+;
+
+317 if–
+VÆveO≥nTime
+ != 0 )
+
+319 
+VÆveO≥nTime
+--;
+
+320 
+mu8OnOff
+ = 
+ON
+;
+
+325 if–
+mu8OnOff
+ =
+ON
+ )
+
+327 
+	`O≥nVÆve
+–
+VALVE_AIR
+ );
+
+331 
+	`Clo£VÆve
+–
+VALVE_AIR
+ );
+
+333 
+	}
+}
+
+335 
 	$MakeHŸW©î
 ()
 
-275 
+337 
 	`Upd©eTime
 ();
 
-278 
+338 
+	`C⁄åﬁAúVÆve
+();
+
+341 
 HŸ
 .
 TempT¨gëOn
@@ -41069,7 +41317,7 @@ TempT¨gëOn
 A…ôude
  );
 
-279 
+342 
 HŸ
 .
 TempT¨gëOff
@@ -41079,7 +41327,7 @@ TempT¨gëOff
 A…ôude
  );
 
-280 
+343 
 HŸ
 .
 TempCuºít
@@ -41089,13 +41337,13 @@ TempCuºít
 TEMP_ID_HOT_WATER
  );
 
-289 if–
+352 if–
 	`IsVÆidMake
 (Ë=
 FALSE
  )
 
-291 
+354 
 HŸ
 .
 Make
@@ -41103,7 +41351,7 @@ Make
 FALSE
 ;
 
-296 if–
+359 if–
 HŸ
 .
 Make
@@ -41111,7 +41359,7 @@ Make
 TRUE
  )
 
-298 if–
+361 if–
 HŸ
 .
 TempT¨gëOff
@@ -41119,7 +41367,7 @@ TempT¨gëOff
 TempCuºít
  )
 
-300 
+363 
 HŸ
 .
 Make
@@ -41127,7 +41375,7 @@ Make
 FALSE
 ;
 
-306 if–
+369 if–
 HŸ
 .
 TempT¨gëOn
@@ -41135,7 +41383,7 @@ TempT¨gëOn
 TempCuºít
  )
 
-308 
+371 
 HŸ
 .
 Make
@@ -41143,7 +41391,7 @@ Make
 TRUE
 ;
 
-313 if–
+376 if–
 HŸ
 .
 TempCuºít
@@ -41151,7 +41399,7 @@ TempCuºít
 PROTECT_HOT_TEMP
  )
 
-315 
+378 
 HŸ
 .
 Make
@@ -41159,11 +41407,11 @@ Make
 FALSE
 ;
 
-317 
+380 
 	}
 }
 
-320 
+383 
 	$SëUnu£dSavögC⁄fig
 (
 U8
@@ -41171,7 +41419,7 @@ U8
 mu8VÆ
  )
 
-322 if–
+385 if–
 mu8VÆ
  !
 TRUE
@@ -41179,7 +41427,7 @@ TRUE
 FALSE
  )
 
-327 
+390 
 HŸ
 .
 Savög
@@ -41189,17 +41437,17 @@ C⁄fig
 mu8VÆ
 ;
 
-328 
+391 
 	}
 }
 
-329 
+392 
 U8
  
 	$GëUnu£dSavögC⁄fig
 ()
 
-331  
+394  
 HŸ
 .
 Savög
@@ -41207,11 +41455,11 @@ Savög
 C⁄fig
 ;
 
-332 
+395 
 	}
 }
 
-335 
+398 
 	$SëUnu£dSavög
 (
 U8
@@ -41219,7 +41467,7 @@ U8
 mu8VÆ
  )
 
-337 
+400 
 HŸ
 .
 Savög
@@ -41229,17 +41477,17 @@ Run
 mu8VÆ
 ;
 
-338 
+401 
 	}
 }
 
-340 
+403 
 U8
  
 	$GëUnu£dSavög
 ()
 
-342  
+405  
 HŸ
 .
 Savög
@@ -41247,15 +41495,15 @@ Savög
 Run
 ;
 
-343 
+406 
 	}
 }
 
-346 
+409 
 	$Re£tUnu£dSavögTime
 ()
 
-348 
+411 
 HŸ
 .
 Savög
@@ -41265,7 +41513,7 @@ Run
 FALSE
 ;
 
-350 
+413 
 HŸ
 .
 Savög
@@ -41273,7 +41521,7 @@ Savög
 RunTime
  = 0;
 
-351 
+414 
 HŸ
 .
 Savög
@@ -41283,25 +41531,25 @@ OnTime
 UNUSED_SAVING_ON_6HOUR
 ;
 
-352 
+415 
 	}
 }
 
-354 #i‡
+417 #i‡
 USE_SAVING_TEMP
 
 
-356 
+419 
 	$Cou¡TempDñayTime
 ()
 
-359 if–
+422 if–
 	`GëTemp
 –
 TEMP_ID_AMBIENT
  ) > 20.0f )
 
-361 if–
+424 if–
 HŸ
 .
 Savög
@@ -41309,7 +41557,7 @@ Savög
 TempOvîTime
  != 0 )
 
-363 
+426 
 HŸ
 .
 Savög
@@ -41317,7 +41565,7 @@ Savög
 TempOvîTime
 --;
 
-365 
+428 
 HŸ
 .
 Savög
@@ -41327,7 +41575,7 @@ TempUndîTime
 DEFAULT_TEMP_TIME
 ;
 
-369 if–
+432 if–
 HŸ
 .
 Savög
@@ -41335,7 +41583,7 @@ Savög
 TempUndîTime
  != 0 )
 
-371 
+434 
 HŸ
 .
 Savög
@@ -41343,7 +41591,7 @@ Savög
 TempUndîTime
 --;
 
-373 
+436 
 HŸ
 .
 Savög
@@ -41353,7 +41601,7 @@ TempOvîTime
 DEFAULT_TEMP_TIME
 ;
 
-377 if–
+440 if–
 HŸ
 .
 Savög
@@ -41361,7 +41609,7 @@ Savög
 TempOvîTime
  == 0 )
 
-379 
+442 
 HŸ
 .
 Savög
@@ -41371,7 +41619,7 @@ TempSètus
 OVER_TEMP
 ;
 
-381 if–
+444 if–
 HŸ
 .
 Savög
@@ -41379,7 +41627,7 @@ Savög
 TempUndîTime
  == 0 )
 
-383 
+446 
 HŸ
 .
 Savög
@@ -41389,23 +41637,23 @@ TempSètus
 UNDER_TEMP
 ;
 
-385 
+448 
 	}
 }
 
-389 
+452 
 	$Pro˚ssUnu£dSavög
 ()
 
-391 #i‡
+454 #i‡
 USE_SAVING_TEMP
 
 
-392 
+455 
 	`Cou¡TempDñayTime
 ();
 
-396 if–
+459 if–
 HŸ
 .
 Savög
@@ -41415,15 +41663,15 @@ C⁄fig
 FALSE
  )
 
-398 
+461 
 	`Re£tUnu£dSavögTime
 ();
 
-403 #i‡
+466 #i‡
 USE_SAVING_TEMP
 
 
-404 if–
+467 if–
 HŸ
 .
 Savög
@@ -41433,7 +41681,7 @@ Run
 TRUE
  )
 
-406 if–
+469 if–
 HŸ
 .
 Savög
@@ -41443,21 +41691,21 @@ TempSètus
 UNDER_TEMP
  )
 
-408 
+471 
 	`Re£tUnu£dSavögTime
 ();
 
-415 if–
+478 if–
 	`GëRoomW©îLevñ
 (Ë!
 LEVEL_HIGH
  )
 
-417 
+480 
 	`Re£tUnu£dSavögTime
 ();
 
-421 if–
+484 if–
 HŸ
 .
 Savög
@@ -41465,7 +41713,7 @@ Savög
 OnTime
  != 0 )
 
-423 
+486 
 HŸ
 .
 Savög
@@ -41473,11 +41721,11 @@ Savög
 OnTime
 --;
 
-427 #i‡
+490 #i‡
 USE_SAVING_TEMP
 
 
-428 if–
+491 if–
 HŸ
 .
 Savög
@@ -41487,7 +41735,7 @@ TempSètus
 OVER_TEMP
  )
 
-431 
+494 
 HŸ
 .
 Savög
@@ -41497,7 +41745,7 @@ Run
 TRUE
 ;
 
-434 
+497 
 	}
 }
 
@@ -41859,7 +42107,11 @@ Re£tUnu£dSavögTime
 Pro˚ssUnu£dSavög
 ();
 
-100 
+99 
+C⁄åﬁAúVÆve
+();
+
+102 
 SèπHŸW©îAúFlow
 ();
 
@@ -41881,23 +42133,27 @@ SèπHŸW©îAúFlow
 	~"îr‹.h
 "
 
-7 
+5 
+	~"timî.h
+"
+
+8 
 	#ROOM_FEED_TIME
  9000U
 
 	)
 
-9 
+10 
 RoomW©î_T
  
 	gRoom
 ;
 
-12 
+13 
 	$InôRoomW©î
 ()
 
-14 
+15 
 Room
 .
 InôFuŒ
@@ -41905,7 +42161,7 @@ InôFuŒ
 FALSE
 ;
 
-15 
+16 
 Room
 .
 Levñ
@@ -41913,7 +42169,7 @@ Levñ
 LEVEL_HIGH
 ;
 
-16 
+17 
 Room
 .
 FìdTime
@@ -41921,11 +42177,11 @@ FìdTime
 ROOM_FEED_TIME
 ;
 
-17 
+18 
 	}
 }
 
-19 
+20 
 	$GëRoomW©îD©a
 (
 RoomW©î_T
@@ -41933,7 +42189,7 @@ RoomW©î_T
 pD©a
 )
 
-21 
+22 
 	`mem˝y
 –
 pD©a
@@ -41943,11 +42199,11 @@ Room
 RoomW©î_T
  ));
 
-22 
+23 
 	}
 }
 
-24 
+25 
 	$SëRoomW©îLevñ
 (
 U8
@@ -41955,7 +42211,7 @@ U8
 mu8VÆ
  )
 
-26 
+27 
 Room
 .
 Levñ
@@ -41963,27 +42219,27 @@ Levñ
 mu8VÆ
 ;
 
-27 
+28 
 	}
 }
 
-29 
+30 
 U8
  
 	$GëRoomW©îLevñ
 ()
 
-31  
+32  
 Room
 .
 Levñ
 ;
 
-32 
+33 
 	}
 }
 
-34 
+35 
 	$SëRoomW©îInôFuŒ
 (
 U8
@@ -41991,7 +42247,7 @@ U8
 mu8VÆ
  )
 
-36 
+37 
 Room
 .
 InôFuŒ
@@ -41999,51 +42255,51 @@ InôFuŒ
 mu8VÆ
 ;
 
-37 
+38 
 	}
 }
 
-39 
+40 
 U8
  
 	$GëRoomW©îInôFuŒ
 ()
 
-41  
+42  
 Room
 .
 InôFuŒ
 ;
 
-42 
+43 
 	}
 }
 
-44 
+45 
 U8
  
 	$IsEº‹RoomW©îLevñ
 ()
 
-46 if–
+47 if–
 	`IsEº‹Ty≥NosFìd
 (Ë=
 TRUE
  )
 
-48  
+49  
 TRUE
 ;
 
-51  
+52  
 FALSE
 ;
 
-52 
+53 
 	}
 }
 
-55 
+56 
 	$SëRoomW©îFìdTime
 (
 U16
@@ -42051,7 +42307,7 @@ U16
 mu16Time
  )
 
-57 
+58 
 Room
 .
 FìdTime
@@ -42059,57 +42315,77 @@ FìdTime
 mu16Time
 ;
 
-58 
+59 
 	}
 }
 
-60 
+61 
 U16
  
 	$GëRoomW©îFìdTime
 ()
 
-62  
+63  
 Room
 .
 FìdTime
 ;
 
-63 
+64 
 	}
 }
 
-65 
+66 
 	$Clo£NosFìdVÆve
 ()
 
-67 
+68 
 	`Clo£VÆve
 –
 VALVE_FEED
  );
 
-68 
+69 
 	`Clo£VÆve
 –
 VALVE_NOS
  );
 
-69 
+70 
 	`Clo£VÆve
 –
 VALVE_AIR
  );
 
-70 
+71 
 	}
 }
 
-73 
+74 
+	#TOF_STATUS_INIT
+ 0
+
+75 
+	#TOF_STATUS_RUN
+ 1
+
+76 
+	#TOF_STATUS_STOP
+ 2
+
+77 
+U8
+ 
+tof_°©us
+;
+
+	)
+
+78 
 	$C⁄åﬁRoomW©îLevñ
 ()
 
-76 
+81 
 Room
 .
 Levñ
@@ -42119,7 +42395,45 @@ Levñ
 LEVEL_ID_ROOM
  );
 
-79 if–
+83 if–
+	`IsExpúedTimî
+–
+TIMER_ID_COMM_TOF_ERR
+ ) =
+TIMER_EXPIRE
+ )
+
+85 
+	`DißbÀTimî
+–
+TIMER_ID_COMM_TOF_ERR
+ );
+
+86 
+tof_°©us
+ = 
+TOF_STATUS_STOP
+;
+
+89 if–
+tof_°©us
+ =
+TOF_STATUS_INIT
+
+
+90 || 
+tof_°©us
+ =
+TOF_STATUS_STOP
+ )
+
+92 
+	`Clo£VÆve
+–
+VALVE_FEED
+ );
+
+97 if–
 	`IsDëe˘T™kLevñ
 –
 LEVEL_ID_ROOM
@@ -42129,7 +42443,7 @@ LEVEL_DETECT_HIGH
 TRUE
 
 
-80 || 
+98 || 
 	`IsDëe˘T™kLevñ
 –
 LEVEL_ID_ROOM
@@ -42139,13 +42453,13 @@ LEVEL_DETECT_OVF
 TRUE
  )
 
-82 
+100 
 	`SëRoomW©îInôFuŒ
 –
 TRUE
  );
 
-83 
+101 
 Room
 .
 FìdTime
@@ -42153,17 +42467,17 @@ FìdTime
 ROOM_FEED_TIME
 ;
 
-88 if–
+106 if–
 	`IsEº‹RoomW©îLevñ
 (Ë=
 TRUE
  )
 
-90 
+108 
 	`Clo£NosFìdVÆve
 ();
 
-95 if–(
+113 if–(
 Room
 .
 Levñ
@@ -42171,17 +42485,17 @@ Levñ
 LEVEL_DETECT_OVF
 ) == LEVEL_DETECT_OVF )
 
-97 
+115 
 	`Clo£NosFìdVÆve
 ();
 
-102 
+120 
 	`O≥nVÆve
 –
 VALVE_NOS
  );
 
-106 if–(
+124 if–(
 Room
 .
 Levñ
@@ -42189,19 +42503,13 @@ Levñ
 LEVEL_DETECT_HIGH
  ) == LEVEL_DETECT_HIGH )
 
-108 
+126 
 	`Clo£VÆve
 –
 VALVE_FEED
  );
 
-109 
-	`Clo£VÆve
-–
-VALVE_AIR
- );
-
-115 if–
+133 if–
 Room
 .
 InôFuŒ
@@ -42209,13 +42517,13 @@ InôFuŒ
 FALSE
  )
 
-117 
+135 
 Room
 .
 FìdTime
  = 0;
 
-120 if–
+138 if–
 Room
 .
 Levñ
@@ -42223,19 +42531,13 @@ Levñ
 LEVEL_LOW
  )
 
-123 
+141 
 	`O≥nVÆve
 –
 VALVE_FEED
  );
 
-124 
-	`O≥nVÆve
-–
-VALVE_AIR
- );
-
-126 if–
+144 if–
 Room
 .
 Levñ
@@ -42243,25 +42545,19 @@ Levñ
 LEVEL_MID
 
 
-127 && 
+145 && 
 Room
 .
 FìdTime
  == 0 )
 
-130 
+148 
 	`O≥nVÆve
 –
 VALVE_FEED
  );
 
-131 
-	`O≥nVÆve
-–
-VALVE_AIR
- );
-
-137 if–
+155 if–
 Room
 .
 Levñ
@@ -42269,7 +42565,7 @@ Levñ
 LEVEL_LOW
 
 
-138 || 
+156 || 
 Room
 .
 Levñ
@@ -42277,19 +42573,19 @@ Levñ
 LEVEL_MID
  )
 
-140 if–
+158 if–
 Room
 .
 FìdTime
  != 0 )
 
-142 
+160 
 Room
 .
 FìdTime
 --;
 
-145 
+163 
 	}
 }
 

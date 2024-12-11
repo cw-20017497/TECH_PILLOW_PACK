@@ -8,6 +8,7 @@
 #include "error.h"
 #include "room_water.h"
 #include "valve.h"
+#include "relay.h"
 
 /* ÎØ∏ÏÇ¨Ïö??à?Ñ ?∏Í∏∞ ?®ÎèÑ?ê ?∞Î•∏ ?ô?ë */
 #define USE_SAVING_TEMP             0   /* 1 : ?¨Ïö? 0: ÎØ∏ÏÇ¨Ïö?*/
@@ -270,9 +271,71 @@ static void UpdateTime(void)
     }
 }
 
+
+
+
+#define HEAT_TIME               1800     // 3min @100ms
+#define AIR_VALVE_ON_TIME       50       // 5sec @100ms
+U16 HeatingTime     = HEAT_TIME;
+U16 ValveOpenTime   = 0;
+
+void ControlAirValve(void)
+{
+    U8 mu8OnOff = OFF;
+
+    // air πÎ∫Í∞° ¥›»˘ ªÛ≈¬ø°º≠ »˜∆√ Ω√∞£ ∞ÀªÁ
+    if( IsTurnOnRelay( RELAY_HEATER ) == TRUE 
+            && IsOpenValve( VALVE_AIR ) == FALSE )
+    {
+        if( HeatingTime != 0 )
+        {
+            HeatingTime--;
+        }
+        else
+        {
+            ValveOpenTime = AIR_VALVE_ON_TIME;
+        }
+    }
+    else
+    {
+        HeatingTime = HEAT_TIME;
+    }
+
+
+    // 1. ±ﬁºˆ ¡ﬂ ¡¶æÓ
+    if( IsOpenValve( VALVE_FEED ) == TRUE )
+    {
+        mu8OnOff = ON;
+    }
+    else 
+    {
+        mu8OnOff = OFF;
+    }
+
+
+    // 2. ±ﬁºˆ ¡ﬂ ¡¶æÓ
+    if( ValveOpenTime != 0 )
+    {
+        ValveOpenTime--;
+        mu8OnOff = ON;
+    }
+
+
+    // open/clse air valve;
+    if( mu8OnOff == ON )
+    {
+        OpenValve( VALVE_AIR );
+    }
+    else
+    {
+        CloseValve( VALVE_AIR );
+    }
+}
+
 void  MakeHotWater(void)
 {
     UpdateTime();
+    ControlAirValve();
 
     // Get Target On , Target Off, Current Temp 
     Hot.TempTargetOn  = GetTargetHotOnTemp( Hot.Altitude );

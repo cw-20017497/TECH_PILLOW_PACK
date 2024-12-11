@@ -144,8 +144,15 @@ extern U8 dbg_start;
 U8 start = FALSE;
 extern U8 InitPowerOn;
 extern I16 tof_sensor[7];
+
+#define TOF_STATUS_INIT     0       // 전원 리셋.. 최초 통신 전
+#define TOF_STATUS_RUN      1       // 통신 수신
+#define TOF_STATUS_STOP     2       // 통신 미수신
+extern U8 tof_status;
+extern U32 dbg_cnt_up;
 static I16 ParserAck(U8 *buf)
 {
+    dbg_cnt_up = 0;
 
     //if( buf[0] != TRUE || buf[1] != TRUE )
     //{
@@ -169,6 +176,9 @@ static I16 ParserAck(U8 *buf)
 //    tof_sensor[5] = GET_UINT_WORD( buf[14], buf[13] );
 //    tof_sensor[6] = GET_UINT_WORD( buf[16], buf[15] );
 
+
+    tof_status = TOF_STATUS_RUN;
+    StartTimer( TIMER_ID_COMM_TOF_ERR, SEC(1) );
     return TRUE;
 }
 

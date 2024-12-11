@@ -96,6 +96,8 @@ U8 GetUnusedSaving(void);
 void ResetUnusedSavingTime(void);
 void ProcessUnusedSaving(void);
 
+void ControlAirValve(void);
+
 /* AIR FLOW */
 void StartHotWaterAirFlow(void);
 

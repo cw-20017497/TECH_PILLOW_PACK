@@ -26,13 +26,14 @@ static void InitStartTimers( void )
 #if !CONFIG_JIG_RBK_FRONT
     StartTimer( TIMER_ID_DEBUG, 100);
 #endif
+    StartTimer( TIMER_ID_COMM_TOF_ERR, SEC(10) );
 }
 
 
 
 void main( void )
 {
-    Delay_MS( 500 );
+    Delay_MS( 1500 );
 
     R_WDT_Restart();
 
