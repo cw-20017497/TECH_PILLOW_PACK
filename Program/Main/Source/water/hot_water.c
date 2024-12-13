@@ -335,7 +335,7 @@ void ControlAirValve(void)
 void  MakeHotWater(void)
 {
     UpdateTime();
-    ControlAirValve();
+    //ControlAirValve();
 
     // Get Target On , Target Off, Current Temp 
     Hot.TempTargetOn  = GetTargetHotOnTemp( Hot.Altitude );

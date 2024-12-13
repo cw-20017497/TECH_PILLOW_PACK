@@ -67,7 +67,7 @@ static void CloseNosFeedValve(void)
 {
     CloseValve( VALVE_FEED );
     CloseValve( VALVE_NOS );
-    CloseValve( VALVE_AIR );
+    //CloseValve( VALVE_AIR );
 }
 
 /* 정수 탱크 수위 관리 */ 

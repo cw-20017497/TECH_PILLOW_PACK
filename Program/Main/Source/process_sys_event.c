@@ -159,7 +159,6 @@ static void Evt_10ms_Handler( void )
 }
 
 
-U32 dbg_cnt_up = 0;
 static void Evt_100ms_Handler(void)
 {
     StartTimer( TIMER_ID_100MS, 100);
@@ -179,7 +178,6 @@ static void Evt_100ms_Handler(void)
     UpdateEolTimer();
 
     ProcessLevelElec();
-    dbg_cnt_up++;
 }
 
 

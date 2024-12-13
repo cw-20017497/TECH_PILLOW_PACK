@@ -102,9 +102,12 @@ static void ScanLevelElec(void)
     }
 }
 
+// 미감지 : 491 , 감지시 : 577
+
 /* 온수 탱크 수위 미감지 시 ( 840~850 ), 감지시 ( 540~550 ) */
 #define THRESHOLD_HISTERESIS      (20U)          // 0.10v
 #define THRESHOLD_HOT_TANK        (700U)         // 3.42v (700) -> 3.66v (750) -> 3.90(800) -> 3.17(650)
+//#define THRESHOLD_HOT_TANK        (530U)         // 3.42v (700) -> 3.66v (750) -> 3.90(800) -> 3.17(650)
 typedef struct _level_electrode_
 {
     EAdcId_T       mEadcId;
